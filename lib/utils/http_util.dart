@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:mall/constant/app_strings.dart';
 import 'package:mall/router/application.dart';
 import 'package:mall/router/routers.dart';
-import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 
 class HttpUtil {
@@ -24,8 +23,8 @@ class HttpUtil {
       receiveTimeout: 5000,
     );
     dio = new Dio(options);
-    dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+    dio.interceptors.add(
+        InterceptorsWrapper(onRequest: (RequestOptions options, handle) async {
       print("========================请求数据===================");
       print("url=${options.uri.toString()}");
       print("params=${options.data}");
@@ -40,7 +39,7 @@ class HttpUtil {
       });
       dio.unlock();
       return options;
-    }, onResponse: (Response response) {
+    }, onResponse: (Response response, handler) {
       print("========================请求数据===================");
       print("code=${response.statusCode}");
       print("response=${response.data}");
@@ -49,7 +48,7 @@ class HttpUtil {
         dio.reject("");
       }
       return response;
-    }, onError: (DioError error) {
+    }, onError: (DioError error, handler) {
       print("========================请求错误===================");
       print("message =${error.message}");
       return error;
