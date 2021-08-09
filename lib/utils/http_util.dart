@@ -3,6 +3,7 @@ import 'package:mall/constant/app_strings.dart';
 import 'package:mall/router/application.dart';
 import 'package:mall/router/routers.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
+import 'package:mall/utils/toast_util.dart';
 
 class HttpUtil {
   // 工厂模式
@@ -23,9 +24,9 @@ class HttpUtil {
       receiveTimeout: 5000,
     );
     dio = new Dio(options);
-    dio.interceptors.add(
+    /*dio.interceptors.add(
         InterceptorsWrapper(onRequest: (RequestOptions options, handle) async {
-      print("========================请求数据===================");
+      print("========================请求数据 onRequest===================");
       print("url=${options.uri.toString()}");
       print("params=${options.data}");
       dio.lock();
@@ -40,7 +41,7 @@ class HttpUtil {
       dio.unlock();
       return options;
     }, onResponse: (Response response, handler) {
-      print("========================请求数据===================");
+      print("========================请求数据 onResponse===================");
       print("code=${response.statusCode}");
       print("response=${response.data}");
       if (response.data[AppStrings.ERR_NO] == 501) {
@@ -52,7 +53,7 @@ class HttpUtil {
       print("========================请求错误===================");
       print("message =${error.message}");
       return error;
-    }));
+    }));*/
   }
 
   //get请求
@@ -76,14 +77,21 @@ class HttpUtil {
   Future post(String url,
       {Map<String, dynamic> parameters, Options options}) async {
     Response response;
+    var parametersFormData= FormData.fromMap(parameters);
     if (parameters != null && options != null) {
-      response = await dio.post(url, data: parameters, options: options);
+      print("parameters != null && options != null");
+      response = await Dio().post(url, data: parametersFormData, options: options);
     } else if (parameters != null && options == null) {
-      response = await dio.post(url, data: parameters);
-    } else if (parameters == null && options != null) {
-      response = await dio.post(url, options: options);
+      print("(parameters != null && options == null)");
+      response = await Dio().post(url, data: parametersFormData);
+    } else if (parametersFormData == null && options != null) {
+     print("parametersFormData == null && options != null");
+      response = await Dio().post(url, options: options);
     } else {
-      response = await dio.post(url);
+      print("[post else]");
+      print("[post else]");
+
+      response = await Dio().post(url);
     }
     return response.data;
   }

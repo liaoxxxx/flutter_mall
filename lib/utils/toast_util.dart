@@ -18,3 +18,16 @@ class ToastUtil {
         fontSize: ScreenUtil().setSp(AppDimens.DIMENS_42));
   }
 }
+
+
+void toast(String msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black45,
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+

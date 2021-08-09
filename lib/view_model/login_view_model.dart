@@ -19,8 +19,9 @@ class LoginViewModel extends BaseViewModel {
   Future<bool> login(String account, String passWord) async {
     bool result = false;
     var parameters = {
-      AppParameters.USER_NAME: account,
-      AppParameters.PASS_WORD: passWord
+      AppParameters.PHONE: account,
+      AppParameters.PASS_WORD: passWord,
+      AppParameters.MMS_LOGIN:"phone"
     };
     await _userService.login(parameters).then((response) {
       if (response.isSuccess) {

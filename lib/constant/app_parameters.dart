@@ -37,4 +37,6 @@ class AppParameters {
   static const String HAS_PICTURE="hasPicture";
   static const String SHOW_TYPE="showType";
   static const String ORDER_ID="orderId";
+  static const String MMS_LOGIN = "mms";
+  static const String PHONE = "phone";
 }
