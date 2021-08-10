@@ -19,7 +19,7 @@ class AppUrls {
   static const String ADD_CART = BASE_URL + '/cart/add'; //加入购物车
   static const String FAST_BUY = BASE_URL + '/cart/fastadd'; //立即购买
   static const String COLLECT_ADD_DELETE = BASE_URL + '/collect/addordelete'; //添加或取消收藏
-  static const String CART_LIST = BASE_URL + '/cart/index'; //购物车数据
+  static const String CART_LIST = BASE_URL + '/goods/cart/index'; //购物车数据
   static const String CART_UPDATE = BASE_URL + '/cart/update'; //更新购物车
   static const String CART_DELETE = BASE_URL + '/cart/delete'; //删除购物车数据
   static const String CART_CHECK = BASE_URL + '/cart/checked'; //购物车商品勾选
@@ -31,7 +31,7 @@ class AppUrls {
   static const String ADDRESS_DETAIL = BASE_URL + '/address/detail'; //地址详情
   static const String ORDER = BASE_URL + '/order'; //生成订单
   static const String FEED_BACK = BASE_URL + '/feedback/submit'; //意见反馈
-  static const String MINE_COUPON_LIST = BASE_URL + '/coupon/mylist'; //所有优惠券
+  static const String MINE_COUPON_LIST = BASE_URL + '/coupon/sure/list'; //所有优惠券
   static const String MINE_FOOTPRINT = BASE_URL + '/footprint/list'; //足迹
   static const String MINE_FOOTPRINT_DELETE = BASE_URL + '/footprint/delete'; //删除足迹
   static const String MINE_COLLECT = BASE_URL + '/collect/list'; //收藏列表

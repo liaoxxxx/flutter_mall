@@ -166,7 +166,7 @@ class MineService {
     JsonResult<CouponEntity> jsonResult = JsonResult<CouponEntity>();
     try {
       var response = await HttpUtil.instance
-          .get(AppUrls.MINE_COUPON_LIST, parameters: parameters);
+          .post(AppUrls.MINE_COUPON_LIST, parameters: parameters);
       if (response[AppStrings.ERR_NO] == 0 &&
           response[AppStrings.DATA] != null) {
         CouponEntity addressDetailEntity =

@@ -1,10 +1,11 @@
 class AppStrings {
   static const String OPEN_DOOR = "开启购物之旅";
   static const String APP_NAME = "Flutter Mall Plus";
-  static const String TOKEN = "X-Litemall-Token";
+  static const String TOKEN = "token";
   static const String NICK_NAME = "NICK_NAME";
   static const String HEAD_URL = "HEAD_URL";
   static const String ERR_NO = "errno";
+  static const String RESP_CODE = "code";
   static const String DATA = "data";
   static const String ERR_MSG = "errmsg";
   static const String SERVER_EXCEPTION = "请求网络数据异常";

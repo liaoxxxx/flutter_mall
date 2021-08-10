@@ -24,8 +24,7 @@ class HttpUtil {
       receiveTimeout: 5000,
     );
     dio = new Dio(options);
-    /*dio.interceptors.add(
-        InterceptorsWrapper(onRequest: (RequestOptions options, handle) async {
+    dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options, handle) async {
       print("========================请求数据 onRequest===================");
       print("url=${options.uri.toString()}");
       print("params=${options.data}");
@@ -36,24 +35,27 @@ class HttpUtil {
           .getString(AppStrings.TOKEN)
           .then((token) {
         options.headers[AppStrings.TOKEN] = token;
-        print("token=${token}");
+        print("token==$token");
       });
       dio.unlock();
-      return options;
-    }, onResponse: (Response response, handler) {
-      print("========================请求数据 onResponse===================");
-      print("code=${response.statusCode}");
-      print("response=${response.data}");
-      if (response.data[AppStrings.ERR_NO] == 501) {
-        Application.navigatorKey.currentState.pushNamed(Routers.login);
-        dio.reject("");
-      }
-      return response;
+      print("dio.unlock");
+      return handle.next(options);
+    }, onResponse: (response, handler) {
+      /*print("========================请求数据 onResponse===================");
+        print("code=${response.statusCode}");
+        print("response=${response.data}");
+        if (response.data[AppStrings.ERR_NO] == 501) {
+          Application.navigatorKey.currentState.pushNamed(Routers.login);
+          dio.reject("");
+        }
+        return response;*/
+      return handler.next(response); // continue
     }, onError: (DioError error, handler) {
-      print("========================请求错误===================");
+     /* print("========================请求错误===================");
       print("message =${error.message}");
-      return error;
-    }));*/
+      return error;*/
+          return  handler.next(error);//continue
+    }));
   }
 
   //get请求
@@ -79,19 +81,13 @@ class HttpUtil {
     Response response;
     var parametersFormData= FormData.fromMap(parameters);
     if (parameters != null && options != null) {
-      print("parameters != null && options != null");
-      response = await Dio().post(url, data: parametersFormData, options: options);
+      response = await dio.post(url, data: parametersFormData, options: options);
     } else if (parameters != null && options == null) {
-      print("(parameters != null && options == null)");
-      response = await Dio().post(url, data: parametersFormData);
+      response = await dio.post(url, data: parametersFormData);
     } else if (parametersFormData == null && options != null) {
-     print("parametersFormData == null && options != null");
-      response = await Dio().post(url, options: options);
+      response = await dio.post(url, options: options);
     } else {
-      print("[post else]");
-      print("[post else]");
-
-      response = await Dio().post(url);
+      response = await dio.post(url);
     }
     return response.data;
   }
