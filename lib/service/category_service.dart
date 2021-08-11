@@ -14,7 +14,7 @@ class CategoryService {
     try {
       var responseList = [];
       var response = await HttpUtil.instance.get(AppUrls.HOME_FIRST_CATEGORY);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         responseList = response[AppStrings.DATA];
         CategoryList categoryList = CategoryList.fromJson(responseList);
@@ -41,7 +41,7 @@ class CategoryService {
       var responseList = [];
       var response = await HttpUtil.instance
           .get(AppUrls.HOME_SECOND_CATEGORY, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         responseList = response[AppStrings.DATA];
         CategoryList categoryList = CategoryList.fromJson(responseList);
@@ -68,7 +68,7 @@ class CategoryService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.CATEGORY_LIST, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         CategoryTitleEntity categoryTitleEntity =
             CategoryTitleEntity.fromJson(response[AppStrings.DATA]);

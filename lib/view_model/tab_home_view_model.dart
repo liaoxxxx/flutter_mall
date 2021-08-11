@@ -14,9 +14,7 @@ class TabHomeViewModel extends BaseViewModel {
     _homeService.queryHomeData().then((response) {
       if (response.isSuccess) {
         homeModelEntity = response.data;
-        pageState =
-            homeModelEntity == null ? PageState.empty : PageState.hasData;
-        print(homeModelEntity.couponList.length);
+        pageState = homeModelEntity == null ? PageState.empty : PageState.hasData;
         notifyListeners();
       }
     }, onError: (errorMessage) {

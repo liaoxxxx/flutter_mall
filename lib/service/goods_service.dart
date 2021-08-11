@@ -16,7 +16,7 @@ class GoodsService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.GOODS_LIST_URL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         CategoryGoodsEntity categoryGoodsEntity =
             CategoryGoodsEntity.fromJson(response[AppStrings.DATA]);
@@ -42,7 +42,7 @@ class GoodsService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.GOODS_DETAILS_URL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         GoodsDetailEntity goodsDetailEntity =
             GoodsDetailEntity.fromJson(response[AppStrings.DATA]);
@@ -69,7 +69,7 @@ class GoodsService {
         AppUrls.FAST_BUY,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
         jsonResult.data = response[AppStrings.DATA];
@@ -93,7 +93,7 @@ class GoodsService {
     try {
       var response = await HttpUtil.instance
           .post(AppUrls.SUBMIT_ORDER, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
       } else {
@@ -116,7 +116,7 @@ class GoodsService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.GOODS_LIST_URL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         SearchGoodsEntity searchGoodsEntity =
             SearchGoodsEntity.fromJson(response[AppStrings.DATA]);

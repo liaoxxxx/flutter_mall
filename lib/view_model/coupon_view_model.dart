@@ -22,13 +22,15 @@ class CouponViewModel extends BaseViewModel {
     _mineService.queryCoupon(parameters).then((response) {
       if (response.isSuccess) {
         _couponBean = response.data;
+        print("---------queryCoupon---------------");
+        print(response.data);
         if (pageIndex == 1) {
           _coupons.clear();
           _coupons = response.data.xList;
         } else {
           _coupons.addAll(response.data.xList);
         }
-        _canLoadMore = coupons.length < _couponBean.total;
+        _canLoadMore = coupons.length < _couponBean.count;
         pageState = _coupons.length == 0 ? PageState.empty : PageState.hasData;
         notifyListeners();
       } else {

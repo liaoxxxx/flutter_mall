@@ -13,7 +13,7 @@ class ProjectSelectionService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.PROJECT_SELECTION_DETAIL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         ProjectSelectionDetailEntity projectSelectionDetailEntity =
             ProjectSelectionDetailEntity.fromJson(response[AppStrings.DATA]);
@@ -39,7 +39,7 @@ class ProjectSelectionService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.PROJECT_SELECTION_RECOMMEND, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         RelatedProjectSelectionEntity relatedProjectSelectionEntity =
             RelatedProjectSelectionEntity.fromJson(response[AppStrings.DATA]);

@@ -17,7 +17,7 @@ class BrandDetailService{
     try {
       var response =
       await HttpUtil.instance.get(AppUrls.BRAND_DETAIL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         BrandDetailEntity brandDetailEntity =
         BrandDetailEntity.fromJson(response[AppStrings.DATA]);

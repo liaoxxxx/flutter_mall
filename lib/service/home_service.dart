@@ -9,8 +9,7 @@ class HomeService {
     JsonResult<HomeEntity> jsonResult = JsonResult<HomeEntity>();
     try {
       var response = await HttpUtil.instance.get(AppUrls.HOME_BASIC_URL);
-      if (response[AppStrings.ERR_NO] == 0 &&
-          response[AppStrings.DATA] != null) {
+      if (response[AppStrings.RESP_CODE] == 1 && response[AppStrings.DATA] != null) {
         HomeEntity homeEntity = HomeEntity.fromJson(response[AppStrings.DATA]);
         jsonResult.isSuccess = true;
         jsonResult.data = homeEntity;

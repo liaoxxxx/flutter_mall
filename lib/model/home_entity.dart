@@ -1,3 +1,4 @@
+import 'package:mall/constant/app_strings.dart';
 import 'package:mall/model/goods_entity.dart';
 
 class HomeEntity {
@@ -14,22 +15,24 @@ class HomeEntity {
 	HomeEntity({this.newGoodsList, this.couponList, this.channel, this.grouponList, this.banner, this.brandList, this.hotGoodsList, this.topicList, this.floorGoodsList});
 
 	HomeEntity.fromJson(Map<String, dynamic> json) {
-		if (json['newGoodsList'] != null) {
+		/*if (json['newGoodsList'] != null) {
 			newGoodsList = new List<GoodsEntity>();(json['newGoodsList'] as List).forEach((v) { newGoodsList.add(new GoodsEntity.fromJson(v)); });
 		}
 		if (json['couponList'] != null) {
 			couponList = new List<HomeModelCouponlist>();(json['couponList'] as List).forEach((v) { couponList.add(new HomeModelCouponlist.fromJson(v)); });
+		}*/
+		if (json['nav'] != null) {
+			channel = new List<HomeModelChannel>();(json['nav'] as List).forEach((v) {
+				channel.add(new HomeModelChannel.fromJson(v));
+			});
 		}
-		if (json['channel'] != null) {
-			channel = new List<HomeModelChannel>();(json['channel'] as List).forEach((v) { channel.add(new HomeModelChannel.fromJson(v)); });
-		}
-		if (json['grouponList'] != null) {
+		/*	if (json['grouponList'] != null) {
 			grouponList = new List<HomeModelGrouponlist>();(json['grouponList'] as List).forEach((v) { grouponList.add(new HomeModelGrouponlist.fromJson(v)); });
-		}
+		}*/
 		if (json['banner'] != null) {
 			banner = new List<HomeModelBanner>();(json['banner'] as List).forEach((v) { banner.add(new HomeModelBanner.fromJson(v)); });
 		}
-		if (json['brandList'] != null) {
+	/*	if (json['brandList'] != null) {
 			brandList = new List<HomeModelBrandlist>();(json['brandList'] as List).forEach((v) { brandList.add(new HomeModelBrandlist.fromJson(v)); });
 		}
 		if (json['hotGoodsList'] != null) {
@@ -40,7 +43,7 @@ class HomeEntity {
 		}
 		if (json['floorGoodsList'] != null) {
 			floorGoodsList = new List<HomeModelFloorgoodslist>();(json['floorGoodsList'] as List).forEach((v) { floorGoodsList.add(new HomeModelFloorgoodslist.fromJson(v)); });
-		}
+		}*/
 	}
 
 	Map<String, dynamic> toJson() {
@@ -121,7 +124,7 @@ class HomeModelChannel {
 	HomeModelChannel.fromJson(Map<String, dynamic> json) {
 		name = json['name'];
 		id = json['id'];
-		iconUrl = json['iconUrl'];
+		iconUrl = json['icon'];
 	}
 
 	Map<String, dynamic> toJson() {
@@ -188,16 +191,17 @@ class HomeModelBanner {
 	HomeModelBanner({this.deleted, this.addTime, this.name, this.link, this.updateTime, this.id, this.position, this.url, this.content, this.enabled});
 
 	HomeModelBanner.fromJson(Map<String, dynamic> json) {
-		deleted = json['deleted'];
-		addTime = json['addTime'];
+		deleted = false;
+		addTime = json['created_at'];
 		name = json['name'];
-		link = json['link'];
-		updateTime = json['updateTime'];
+		link = json['url'];
+		updateTime = json['updated_at'];
 		id = json['id'];
-		position = json['position'];
-		url = json['url'];
-		content = json['content'];
-		enabled = json['enabled'];
+		//position = json['position'];
+		position = 0;
+		url = json['image'];
+		content = json['image'];
+		enabled = json['state']==AppStrings.StateOK?true :false;
 	}
 
 	Map<String, dynamic> toJson() {

@@ -7,7 +7,7 @@ class AppStrings {
   static const String ERR_NO = "errno";
   static const String RESP_CODE = "code";
   static const String DATA = "data";
-  static const String ERR_MSG = "errmsg";
+  static const String ERR_MSG = "msg";
   static const String SERVER_EXCEPTION = "请求网络数据异常";
   static const String HOME = "首页";
   static const String CATEGORY = "分类";
@@ -189,4 +189,7 @@ class AppStrings {
   static const String ORDER_RECEIVE_SYSTEM = "已收货(系统)";
   static const String PLEASE_SELECT_FOOT_PRINT = "请选择需要删除的足迹";
   static const String DELETE_FOOT_PRINT_FAIL = "删除全部失败或者部分失败";
+
+
+  static const int StateOK = 2;
 }

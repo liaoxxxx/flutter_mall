@@ -20,7 +20,7 @@ class MineService {
         AppUrls.COLLECT_ADD_DELETE,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0 ) {
+      if (response[AppStrings.RESP_CODE] == 1 ) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -42,7 +42,7 @@ class MineService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.MINE_COLLECT, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         CollectionEntity collectEntity =
             CollectionEntity.fromJson(response[AppStrings.DATA]);
@@ -68,7 +68,7 @@ class MineService {
       var response = await HttpUtil.instance.get(
         AppUrls.ADDRESS_LIST,
       );
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         AddressEntity addressEntity =
             AddressEntity.fromJson(response[AppStrings.DATA]);
@@ -95,7 +95,7 @@ class MineService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.ADDRESS_DETAIL, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         AddressDetailEntity addressDetailEntity =
             AddressDetailEntity.fromJson(response[AppStrings.DATA]);
@@ -121,7 +121,7 @@ class MineService {
     try {
       var response = await HttpUtil.instance
           .get(AppUrls.ADDRESS_DELETE, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
       } else {
@@ -144,7 +144,7 @@ class MineService {
     try {
       var response = await HttpUtil.instance
           .post(AppUrls.ADDRESS_SAVE, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
       } else {
@@ -161,14 +161,11 @@ class MineService {
   }
 
   //我的优惠券
-  Future<JsonResult<CouponEntity>> queryCoupon(
-      Map<String, dynamic> parameters) async {
+  Future<JsonResult<CouponEntity>> queryCoupon(Map<String, dynamic> parameters) async {
     JsonResult<CouponEntity> jsonResult = JsonResult<CouponEntity>();
     try {
-      var response = await HttpUtil.instance
-          .post(AppUrls.MINE_COUPON_LIST, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
-          response[AppStrings.DATA] != null) {
+      var response = await HttpUtil.instance.post(AppUrls.MINE_COUPON_LIST, parameters: parameters);
+      if (response[AppStrings.RESP_CODE] == 1 && response[AppStrings.DATA] != null) {
         CouponEntity addressDetailEntity =
             CouponEntity.fromJson(response[AppStrings.DATA]);
         jsonResult.isSuccess = true;
@@ -193,7 +190,7 @@ class MineService {
     try {
       var response = await HttpUtil.instance
           .post(AppUrls.RECEIVE_COUPON, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
       } else {
@@ -217,7 +214,7 @@ class MineService {
         AppUrls.FEED_BACK,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -241,16 +238,13 @@ class MineService {
         AppUrls.MINE_FOOTPRINT,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
-        FootPrintEntity footPrintEntity =
-            FootPrintEntity.fromJson(response[AppStrings.DATA]);
+      if (response[AppStrings.RESP_CODE] == 1) {
+        FootPrintEntity footPrintEntity = FootPrintEntity.fromJson(response[AppStrings.DATA]);
         jsonResult.isSuccess = true;
         jsonResult.data = footPrintEntity;
       } else {
         jsonResult.isSuccess = false;
-        jsonResult.message = response[AppStrings.ERR_MSG] != null
-            ? response[AppStrings.ERR_MSG]
-            : AppStrings.SERVER_EXCEPTION;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null ? response[AppStrings.ERR_MSG] : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
       jsonResult.isSuccess = false;
@@ -268,7 +262,7 @@ class MineService {
         AppUrls.MINE_FOOTPRINT_DELETE,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -292,7 +286,7 @@ class MineService {
         AppUrls.MINE_ORDERS,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
         OrderListEntity orderListEntity =
             OrderListEntity.fromJson(response[AppStrings.DATA]);
@@ -319,7 +313,7 @@ class MineService {
         AppUrls.MINE_ORDER_DELETE,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -343,7 +337,7 @@ class MineService {
         AppUrls.MINE_ORDER_CANCEL,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -367,7 +361,7 @@ class MineService {
         AppUrls.MINE_ORDER_DETAIL,
         parameters: parameters,
       );
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         OrderDetailEntity orderDetailEntity =
             OrderDetailEntity.fromJson(response[AppStrings.DATA]);

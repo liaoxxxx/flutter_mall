@@ -11,7 +11,7 @@ class CartService {
     try {
       var response = await HttpUtil.instance
           .post(AppUrls.ADD_CART, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0) {
+      if (response[AppStrings.RESP_CODE] == 1) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;
@@ -32,7 +32,7 @@ class CartService {
     try {
       var response =
           await HttpUtil.instance.get(AppUrls.CART_BUY, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         FillInOrderEntity fillInOrderEntity =
             FillInOrderEntity.fromJson(response[AppStrings.DATA]);
@@ -57,8 +57,7 @@ class CartService {
     try {
       var response;
       response = await HttpUtil.instance.get(AppUrls.CART_LIST);
-      if (response[AppStrings.ERR_NO] == 0 &&
-          response[AppStrings.DATA] != null) {
+      if (response[AppStrings.RESP_CODE] == 1 && response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
         CartEntity cartEntity = CartEntity.fromJson(response[AppStrings.DATA]);
         jsonResult.data = cartEntity;
@@ -81,7 +80,7 @@ class CartService {
     try {
       var response = await HttpUtil.instance
           .post(AppUrls.CART_CHECK, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
         CartEntity cartEntity = CartEntity.fromJson(response[AppStrings.DATA]);
@@ -106,7 +105,7 @@ class CartService {
       var response;
       response = await HttpUtil.instance
           .post(AppUrls.CART_DELETE, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 &&
+      if (response[AppStrings.RESP_CODE] == 1 &&
           response[AppStrings.DATA] != null) {
         jsonResult.isSuccess = true;
         CartEntity cartEntity = CartEntity.fromJson(response[AppStrings.DATA]);
@@ -132,7 +131,7 @@ class CartService {
       var response;
       response = await HttpUtil.instance
           .post(AppUrls.CART_UPDATE, parameters: parameters);
-      if (response[AppStrings.ERR_NO] == 0 ) {
+      if (response[AppStrings.RESP_CODE] == 1 ) {
         jsonResult.isSuccess = true;
       } else {
         jsonResult.isSuccess = false;

@@ -41,9 +41,7 @@ class CartViewModel extends BaseViewModel {
       if (response.isSuccess) {
         _cartEntity = response.data;
         _isAllCheck = _checkedAll();
-        pageState = _cartEntity.cartList.length == 0
-            ? PageState.empty
-            : PageState.hasData;
+        pageState = _cartEntity.cartList.length == 0 ? PageState.empty : PageState.hasData;
         _isShowBottomView = _cartEntity.cartList.length > 0;
         notifyListeners();
       } else {
@@ -54,13 +52,15 @@ class CartViewModel extends BaseViewModel {
   }
 
   bool _checkedAll() {
-    for (int i = 0; i < _cartEntity.cartList.length; i++) {
-      if (_cartEntity.cartList[i].checked == null ||
-          !_cartEntity.cartList[i].checked) {
-        return false;
+    if (_cartEntity.cartList!=null&&_cartEntity.cartList.length >0 ) {
+      for (int i = 0; i < _cartEntity.cartList.length; i++) {
+        if (_cartEntity.cartList[i].checked == null ||
+            !_cartEntity.cartList[i].checked) {
+          return false;
+        }
       }
+      return true;
     }
-    return true;
   }
 
   Future<bool> deleteCartGoods(List productIds, int index) async {

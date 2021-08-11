@@ -6,8 +6,10 @@ class CartEntity {
 
 	CartEntity.fromJson(Map<String, dynamic> json) {
 		cartTotal = json['cartTotal'] != null ? new CartTotalBean.fromJson(json['cartTotal']) : null;
-		if (json['cartList'] != null) {
-			cartList = new List<CartBean>();(json['cartList'] as List).forEach((v) { cartList.add(new CartBean.fromJson(v)); });
+		if (json['list'] != null) {
+			cartList = new List<CartBean>();(json['list'] as List).forEach((v) { cartList.add(new CartBean.fromJson(v)); });
+		}else{
+			cartList=[];
 		}
 	}
 

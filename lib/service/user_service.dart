@@ -33,7 +33,7 @@ Future<JsonResult<dynamic>> register(Map<String, dynamic> parameters) async {
   JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
   try {
     var response = await HttpUtil.instance.post(AppUrls.REGISTER, parameters: parameters);
-    if (response[AppStrings.ERR_NO] == 0) {
+    if (response[AppStrings.RESP_CODE] == 1) {
       jsonResult.isSuccess = true;
       jsonResult.data = AppStrings.SUCCESS;
     } else {
