@@ -2,6 +2,7 @@ class AppUrls {
 //  static const String BASE_URL='http://192.168.190.98:8082/wx'; //测试服务
   static const String BASE_URL = 'https://go2mall.liaoxx.top/xx'; //线上服务
   static const String HOME_URL = BASE_URL + '/home/index'; //首页数据
+  static const String HOME_BASIC_URL = BASE_URL + '/common/page/basics'; //首页数据
   static const String BANNER_URL = BASE_URL + '/home/banner'; //获取首页banner图
   static const String CATEGORY_URL = BASE_URL + '/home/categories'; //获取首页分类
   static const String COUPON_URL = BASE_URL + '/home/couponList'; //优惠券

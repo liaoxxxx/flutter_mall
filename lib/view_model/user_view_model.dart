@@ -63,7 +63,7 @@ class UserViewModel extends BaseViewModel {
     };
     await _mineService
         .queryCoupon(couponParameters)
-        .then((value) => _couponNumber = value.data.total);
+        .then((value) => _couponNumber = value.data.count);
   }
 
   _queryCollection() async {

@@ -8,7 +8,7 @@ class HomeService {
   Future<JsonResult<HomeEntity>> queryHomeData() async {
     JsonResult<HomeEntity> jsonResult = JsonResult<HomeEntity>();
     try {
-      var response = await HttpUtil.instance.get(AppUrls.HOME_URL);
+      var response = await HttpUtil.instance.get(AppUrls.HOME_BASIC_URL);
       if (response[AppStrings.ERR_NO] == 0 &&
           response[AppStrings.DATA] != null) {
         HomeEntity homeEntity = HomeEntity.fromJson(response[AppStrings.DATA]);

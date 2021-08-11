@@ -1,5 +1,6 @@
 class CouponEntity {
 	int total;
+	int count;
 	int pages;
 	int limit;
 	int page;
@@ -10,6 +11,7 @@ class CouponEntity {
 	CouponEntity.fromJson(Map<String, dynamic> json) {
 		total = json['total'];
 		pages = json['pages'];
+		count = json['count'];
 		limit = json['limit'];
 		page = json['page'];
 		if (json['list'] != null) {
@@ -22,6 +24,7 @@ class CouponEntity {
 		data['total'] = this.total;
 		data['pages'] = this.pages;
 		data['limit'] = this.limit;
+		data['count'] = this.count;
 		data['page'] = this.page;
 		if (this.xList != null) {
       data['list'] =  this.xList.map((v) => v.toJson()).toList();
