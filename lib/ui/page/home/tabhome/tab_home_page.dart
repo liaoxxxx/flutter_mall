@@ -108,14 +108,14 @@ class _TabHomePageState extends State<TabHomePage>
             TabHomeGoodsCategory(_model.homeModelEntity.channel),
            //TabHomeCoupon(_model.homeModelEntity.couponList, _model),
            //TabHomeGroupByWidget(_model.homeModelEntity.grouponList),
-           //TabHomeGoods(AppStrings.NEW_PRODUCTS, _model.homeModelEntity.newGoodsList),
-           //TabHomeGoods(AppStrings.HOT_SALE, _model.homeModelEntity.hotGoodsList),
-           //TabHomeGoods(AppStrings.AT_HOME, _model.homeModelEntity.floorGoodsList[0].goodsList),
-           //TabHomeGoods(AppStrings.KITCHEN, _model.homeModelEntity.floorGoodsList[1].goodsList),
-           //TabHomeGoods(AppStrings.DIET, _model.homeModelEntity.floorGoodsList[2].goodsList),
-           //TabHomeGoods(AppStrings.PARTS, _model.homeModelEntity.floorGoodsList[3].goodsList),
-           //TabHomeSpecial(AppStrings.SPECIAL, _model.homeModelEntity.topicList),
-           //TabHomeBrand(AppStrings.MANUFACTURING, _model.homeModelEntity.brandList)
+            TabHomeGoods(AppStrings.NEW_PRODUCTS, _model.homeModelEntity.newGoodsList),
+            TabHomeGoods(AppStrings.HOT_SALE, _model.homeModelEntity.hotGoodsList),
+            //TabHomeGoods(AppStrings.AT_HOME, _model.homeModelEntity.floorGoodsList[0].goodsList),
+            //TabHomeGoods(AppStrings.KITCHEN, _model.homeModelEntity.floorGoodsList[1].goodsList),
+            //TabHomeGoods(AppStrings.DIET, _model.homeModelEntity.floorGoodsList[2].goodsList),
+            //TabHomeGoods(AppStrings.PARTS, _model.homeModelEntity.floorGoodsList[3].goodsList),
+            TabHomeSpecial(AppStrings.SPECIAL, _model.homeModelEntity.topicList),
+            TabHomeBrand(AppStrings.MANUFACTURING, _model.homeModelEntity.brandList)
           ],
         ));
   }

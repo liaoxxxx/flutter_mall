@@ -15,12 +15,12 @@ class HomeEntity {
 	HomeEntity({this.newGoodsList, this.couponList, this.channel, this.grouponList, this.banner, this.brandList, this.hotGoodsList, this.topicList, this.floorGoodsList});
 
 	HomeEntity.fromJson(Map<String, dynamic> json) {
-		/*if (json['newGoodsList'] != null) {
-			newGoodsList = new List<GoodsEntity>();(json['newGoodsList'] as List).forEach((v) { newGoodsList.add(new GoodsEntity.fromJson(v)); });
+		if (json['isnew'] != null) {
+			newGoodsList = new List<GoodsEntity>();(json['isnew'] as List).forEach((v) { newGoodsList.add(new GoodsEntity.fromJson(v)); });
 		}
-		if (json['couponList'] != null) {
-			couponList = new List<HomeModelCouponlist>();(json['couponList'] as List).forEach((v) { couponList.add(new HomeModelCouponlist.fromJson(v)); });
-		}*/
+		//if (json['couponList'] != null) {
+		//	couponList = new List<HomeModelCouponlist>();(json['couponList'] as List).forEach((v) { couponList.add(new HomeModelCouponlist.fromJson(v)); });
+		//}
 		if (json['nav'] != null) {
 			channel = new List<HomeModelChannel>();(json['nav'] as List).forEach((v) {
 				channel.add(new HomeModelChannel.fromJson(v));
@@ -32,18 +32,18 @@ class HomeEntity {
 		if (json['banner'] != null) {
 			banner = new List<HomeModelBanner>();(json['banner'] as List).forEach((v) { banner.add(new HomeModelBanner.fromJson(v)); });
 		}
-	/*	if (json['brandList'] != null) {
+		if (json['brandList'] != null) {
 			brandList = new List<HomeModelBrandlist>();(json['brandList'] as List).forEach((v) { brandList.add(new HomeModelBrandlist.fromJson(v)); });
 		}
-		if (json['hotGoodsList'] != null) {
-			hotGoodsList = new List<GoodsEntity>();(json['hotGoodsList'] as List).forEach((v) { hotGoodsList.add(new GoodsEntity.fromJson(v)); });
+		if (json['ishot'] != null) {
+			hotGoodsList = new List<GoodsEntity>();(json['ishot'] as List).forEach((v) { hotGoodsList.add(new GoodsEntity.fromJson(v)); });
 		}
 		if (json['topicList'] != null) {
 			topicList = new List<HomeModelTopiclist>();(json['topicList'] as List).forEach((v) { topicList.add(new HomeModelTopiclist.fromJson(v)); });
 		}
-		if (json['floorGoodsList'] != null) {
-			floorGoodsList = new List<HomeModelFloorgoodslist>();(json['floorGoodsList'] as List).forEach((v) { floorGoodsList.add(new HomeModelFloorgoodslist.fromJson(v)); });
-		}*/
+		//if (json['floorGoodsList'] != null) {
+		//	floorGoodsList = new List<HomeModelFloorgoodslist>();(json['floorGoodsList'] as List).forEach((v) { floorGoodsList.add(new HomeModelFloorgoodslist.fromJson(v)); });
+		//}
 	}
 
 	Map<String, dynamic> toJson() {
@@ -230,8 +230,9 @@ class HomeModelBrandlist {
 	HomeModelBrandlist({this.floorPrice, this.picUrl, this.name, this.id, this.desc});
 
 	HomeModelBrandlist.fromJson(Map<String, dynamic> json) {
-		floorPrice = json['floorPrice'];
-		picUrl = json['picUrl'];
+		//floorPrice = json['floorPrice'];
+		floorPrice =0.00;
+		picUrl = json['logo'];
 		name = json['name'];
 		id = json['id'];
 		desc = json['desc'];
@@ -259,12 +260,13 @@ class HomeModelTopiclist {
 	HomeModelTopiclist({this.picUrl, this.price, this.subtitle, this.id, this.title, this.readCount});
 
 	HomeModelTopiclist.fromJson(Map<String, dynamic> json) {
-		picUrl = json['picUrl'];
-		price = json['price'];
-		subtitle = json['subtitle'];
+		picUrl = json['thumb'];
+		//price = json['price'];
+		price = 0.00;
+		subtitle = json['title'];
 		id = json['id'];
 		title = json['title'];
-		readCount = json['readCount'];
+		readCount = json['Praise_num'];
 	}
 
 	Map<String, dynamic> toJson() {

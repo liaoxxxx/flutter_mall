@@ -1,3 +1,5 @@
+import 'package:mall/constant/app_strings.dart';
+
 class GoodsEntity {
   String brief;
   String picUrl;
@@ -19,14 +21,14 @@ class GoodsEntity {
       this.isHot});
 
   GoodsEntity.fromJson(Map<String, dynamic> json) {
-    brief = json['brief'];
-    picUrl = json['picUrl'];
-    name = json['name'];
-    counterPrice = json['counterPrice'];
+    brief = json['description'];
+    picUrl = json['thumb'];
+    name = json['title'];
+    counterPrice = json['marketprice'];
     id = json['id'];
-    isNew = json['isNew'];
-    retailPrice = json['retailPrice'];
-    isHot = json['isHot'];
+    isNew = json['is_new']==AppStrings.StateOK ? true:false;
+    retailPrice = json['productprice'];
+    isHot = json['is_hot']==AppStrings.StateOK ? true:false;
   }
 
   Map<String, dynamic> toJson() {
