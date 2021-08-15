@@ -25,11 +25,13 @@ class GoodsWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Column(
                   children: <Widget>[
-                    CachedImageView(
-                      ScreenUtil().setHeight(AppDimens.DIMENS_400),
-                      ScreenUtil().setHeight(AppDimens.DIMENS_400),
-                      _goodsEntity.picUrl,
-                    ),
+                    Expanded(
+                        child: CachedImageView(
+                          ScreenUtil().setHeight(AppDimens.DIMENS_400),
+                          ScreenUtil().setHeight(AppDimens.DIMENS_400),
+                          _goodsEntity.picUrl,
+                        ),
+                      ),
                     Container(
                       margin: EdgeInsets.only(
                           top: ScreenUtil().setHeight(AppDimens.DIMENS_20),

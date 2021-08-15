@@ -1,3 +1,5 @@
+import 'package:mall/constant/app_strings.dart';
+
 class GoodsDetailEntity {
 	List<GoodsDetailSpecificationlist> specificationList;
 	List<Null> groupon;
@@ -14,7 +16,7 @@ class GoodsDetailEntity {
 	GoodsDetailEntity({this.specificationList, this.groupon, this.issue, this.userHasCollect, this.shareImage, this.comment, this.share, this.attribute, this.brand, this.productList, this.info});
 
 	GoodsDetailEntity.fromJson(Map<String, dynamic> json) {
-		if (json['specificationList'] != null) {
+		/*if (json['specificationList'] != null) {
 			specificationList = new List<GoodsDetailSpecificationlist>();(json['specificationList'] as List).forEach((v) { specificationList.add(new GoodsDetailSpecificationlist.fromJson(v)); });
 		}
 		if (json['groupon'] != null) {
@@ -33,8 +35,8 @@ class GoodsDetailEntity {
 		brand = json['brand'] != null ? new GoodsDetailBrand.fromJson(json['brand']) : null;
 		if (json['productList'] != null) {
 			productList = new List<GoodsDetailProductlist>();(json['productList'] as List).forEach((v) { productList.add(new GoodsDetailProductlist.fromJson(v)); });
-		}
-		info = json['info'] != null ? new GoodsDetailInfo.fromJson(json['info']) : null;
+		}*/
+		info = json['list'] != null ? new GoodsDetailInfo.fromJson(json['list']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
@@ -324,27 +326,29 @@ class GoodsDetailInfo {
 	GoodsDetailInfo({this.brief, this.keywords, this.addTime, this.goodsSn, this.updateTime, this.isNew, this.picUrl, this.unit, this.deleted, this.brandId, this.sortOrder, this.name, this.shareUrl, this.counterPrice, this.id, this.detail, this.isOnSale, this.retailPrice, this.categoryId, this.gallery, this.isHot});
 
 	GoodsDetailInfo.fromJson(Map<String, dynamic> json) {
-		brief = json['brief'];
-		keywords = json['keywords'];
-		addTime = json['addTime'];
-		goodsSn = json['goodsSn'];
-		updateTime = json['updateTime'];
-		isNew = json['isNew'];
-		picUrl = json['picUrl'];
-		unit = json['unit'];
-		deleted = json['deleted'];
-		brandId = json['brandId'];
-		sortOrder = json['sortOrder'];
-		name = json['name'];
+		brief = json['desc'];
+		//keywords = json['keywords'];
+		addTime = json['created_at'];
+		goodsSn = json['goodssn'];
+		updateTime = json['updated_at'];
+		isNew = json['is_new']==AppStrings.StateOK?true:false;
+		picUrl = json['thumb'];
+		//unit = json['unit'];
+		unit = '件';
+		//deleted = json['deleted'];
+    deleted = false;
+    brandId = json['brand_id'];
+    sortOrder = json['r'];
+		name = json['title'];
 		shareUrl = json['shareUrl'];
-		counterPrice = json['counterPrice'];
+		//counterPrice = json['marketprice'];
 		id = json['id'];
-		detail = json['detail'];
-		isOnSale = json['isOnSale'];
-		retailPrice = json['retailPrice'];
-		categoryId = json['categoryId'];
-		gallery = json['gallery']?.cast<String>();
-		isHot = json['isHot'];
+		detail = json['content'];
+		isOnSale = json['state']==AppStrings.StateOK?true:false;
+		retailPrice = json['productprice'];
+		categoryId = json['cate'];
+		//gallery =  json['thumbs']?.cast<String>();
+		isHot = json['is_hot'];
 	}
 
 	Map<String, dynamic> toJson() {
